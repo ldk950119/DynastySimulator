@@ -1,0 +1,35 @@
+/* Import Tailwind CSS */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css');
+
+body {
+    font-family: 'Noto Serif SC', serif;
+    touch-action: manipulation;
+}
+
+.game-container {
+    background-image: linear-gradient(rgba(19, 21, 28, 0.95), rgba(19, 21, 28, 0.95)), url('https://placehold.co/1920x1080/13151c/333333?text=Dragon+Pattern');
+    background-size: cover;
+    background-position: center;
+}
+
+.stat-bar-bg {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.stat-bar-fill {
+    transition: width 0.5s ease-in-out;
+}
+
+.choice-btn {
+    transition: all 0.2s ease-in-out;
+}
+
+.choice-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(251, 191, 36, 0.2);
+}
+
+.modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+}

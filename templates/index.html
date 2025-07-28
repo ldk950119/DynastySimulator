@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>王朝末年模拟器</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-gray-200">
+
+    <div id="game-container" class="game-container min-h-screen w-full flex flex-col items-center justify-center p-4 transition-opacity duration-500 hidden">
+
+        <!-- 顶部状态栏 -->
+        <header class="w-full max-w-4xl mb-4">
+            <div class="bg-black/30 backdrop-blur-sm rounded-lg p-4 shadow-lg border border-gray-700">
+                <div class="flex justify-between items-center text-lg md:text-xl font-bold text-amber-300">
+                    <div><span id="year"></span></div>
+                    <div><span id="dynasty-name">大乾王朝</span></div>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-4">
+                    <div class="text-center"><h3 class="text-sm text-gray-400">皇威</h3><p id="prestige" class="text-2xl font-bold text-white"></p></div>
+                    <div class="text-center"><h3 class="text-sm text-gray-400">健康</h3><p id="health" class="text-2xl font-bold text-white"></p></div>
+                    <div class="text-center"><h3 class="text-sm text-gray-400">心态</h3><p id="mentality" class="text-2xl font-bold text-white"></p></div>
+                    <div class="text-center"><h3 class="text-sm text-gray-400">国库(万两)</h3><p id="treasury" class="text-2xl font-bold text-white"></p></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mt-4 text-sm">
+                    <div><span>民心</span><div class="w-full stat-bar-bg rounded-full h-2.5"><div id="stability-bar" class="bg-green-500 h-2.5 rounded-full stat-bar-fill"></div></div></div>
+                    <div><span>军力</span><div class="w-full stat-bar-bg rounded-full h-2.5"><div id="military-bar" class="bg-red-500 h-2.5 rounded-full stat-bar-fill"></div></div></div>
+                    <div><span>农业</span><div class="w-full stat-bar-bg rounded-full h-2.5"><div id="agriculture-bar" class="bg-yellow-500 h-2.5 rounded-full stat-bar-fill"></div></div></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- 事件卡片 -->
+        <main id="event-card" class="w-full max-w-4xl flex-grow flex flex-col justify-center">
+            <div class="bg-black/30 backdrop-blur-sm rounded-lg p-6 shadow-2xl border border-gray-700 min-h-[300px] flex flex-col justify-between">
+                <div>
+                    <h2 id="event-title" class="text-2xl md:text-3xl font-bold text-amber-300 mb-4"></h2>
+                    <p id="event-report" class="text-gray-300 leading-relaxed"></p>
+                </div>
+                <div class="mt-6">
+                    <div id="event-choices" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+                    <div id="result-box" class="mt-4 p-4 bg-black/20 border-t border-gray-600 rounded-lg hidden">
+                        <h4 class="font-bold text-gray-400 mb-2">结果：</h4>
+                        <p id="result-text" class="text-amber-200"></p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- 派系状态 -->
+        <footer class="w-full max-w-4xl mt-4">
+             <div class="bg-black/30 backdrop-blur-sm rounded-lg p-4 shadow-lg border border-gray-700">
+                <h3 class="text-center text-lg font-bold text-amber-300 mb-3">派系一览</h3>
+                <div id="factions-display" class="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-2 text-sm"></div>
+             </div>
+        </footer>
+    </div>
+
+    <!-- 模态框 (开局/结局) -->
+    <div id="modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop">
+        <div class="bg-gray-800 border border-amber-400 rounded-lg shadow-2xl w-full max-w-lg text-center p-8">
+            <h2 id="modal-title" class="text-3xl font-bold text-amber-300 mb-4"></h2>
+            <p id="modal-text" class="text-gray-300 mb-6"></p>
+            <div id="modal-choices" class="flex flex-col gap-4"></div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
